@@ -1,0 +1,25 @@
+//=============================================================================
+// TS_D01_1200_DE01Death.
+//=============================================================================
+class TS_D01_1200_DE01Death extends TriggeredScript
+	placeable;
+
+state Triggered
+{
+	Begin:
+
+	sleep( 1.0 );
+
+	ACTION_TriggerEvent( 'Counter_MasterDeath' );
+	ACTION_TriggerEvent( 'CSG_Squad_Assault_01' );
+	ACTION_OrderMove( 'Unit_DE_Assault_01', 'PN_Charge_02', true );
+
+	sleep( 30.0 );
+
+	ACTION_OrderMove( 'Unit_DE_Assault_01', 'PN_Charge_06', true );
+
+	sleep( 60.0 );
+
+	ACTION_OrderAssault( 'Unit_DE_Assault_01', 'Unit_Player' );
+
+}
