@@ -7,5 +7,5 @@ SS = Scripted Sequence;
 LT = Light Type / Look Target;
 CSG = Character Spawn Group;
 SM = Static Mesh;
-SI = ?
+SI = Scripted Intitalization (?)
 
