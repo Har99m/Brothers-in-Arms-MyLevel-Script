@@ -1,0 +1,51 @@
+//=============================================================================
+// CheckPointReload4Script.
+//=============================================================================
+class CheckPointReload4Script extends TriggeredScript
+	placeable;
+
+state Triggered
+{
+	Begin:
+	Sleep( 0.1 );
+
+	//STUFF TO DELETE FROM SCRIPT1
+	ACTION_DestroyActor( 'Trigger_KillPlayerScript' );
+	ACTION_DestroyActor( 'Waypoint_RoadBlock2' );
+	ACTION_DestroyActor( 'Combat1Script_triggersave' );
+	ACTION_DestroyActor( 'trigger_Combat1Script' );
+	ACTION_DestroyActor( 'Combat1Script_trigger' );
+	ACTION_DestroyActor( 'Combat1Script_trigger2' );
+	ACTION_SetHidden( 'fencedestroyed' , true );
+	ACTION_DestroyActor( 'Crow2' );
+	ACTION_DestroyActor( 'Crow1' );
+
+	//STUFF TO DELETE FROM SCRIPT2
+	ACTION_DestroyActor( 'Combat2Script_trigger2' );
+	ACTION_DestroyActor( 'Waypoint_MG42_RB2' );
+	ACTION_DestroyActor( 'Combat2SaveState_triggerEnd' );
+
+	//STUFF TO DELETE FROM SCRIPT3
+	ACTION_DestroyActor( 'Combat3Script_trigger' );
+	ACTION_DestroyActor( 'Waypoint_ChurchArea' );
+	ACTION_DestroyActor( 'Combat3ScriptSave_trigger' );
+
+	ACTION_TriggerEvent( 'Combat4Script_trigger' );
+	ACTION_BlockNavPoints( 'PN_Fence_Road' );
+	ACTION_BlockNavPoints( 'PN_Fence_Field' );
+
+	// Spawn Hartsock, Garnett, Allen
+	ACTION_TriggerEvent( 'CP4_SpawnUSSquad' );
+
+	ACTION_SetObjectiveStatus( 0, OI_Active, 'ObjectiveList_FV' );
+	ACTION_DisplayObjective( 0, 'ObjectiveList_FV', 4.0 );
+	//Start Objective and Turn On Objective Beacon
+//	ACTION_DisplayObjectiveString( "HINT: Man the MG42 to defend the church.", 4.0 );
+	ACTION_DisplayObjectiveHint(S_Localize("HINT_2", "D0_1500_FOUCARVILLE" ), 3.0 );
+	ACTION_TriggerEvent( 'Waypoint_ChurchRoadBlock' );
+
+	ACTION_SaveMemoryReport( "foucarville_checkpoint3_after" );
+	ACTION_FadeOverlay( GetLocalPlayerController(), 2, 6.0 );
+
+EndScript:
+}
